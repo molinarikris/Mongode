@@ -1,5 +1,5 @@
 var assert = require('assert');
-var db = new require('../lib/index.js')('test', 'controller');
+var db = new require('../src/mongode.min.js')('test', 'controllers');
 
 describe('Mongode', function(){
 	describe('#connection', function() {
@@ -54,7 +54,7 @@ describe('Mongode', function(){
 		})
 	});
 	describe('#delete', function(){
-		it('should remove according to a specific mongo query', function(done){
+		it('should remove everything according to an empty mongo query', function(done){
 			db.delete({}, function(err, res){
 				assert.equal(null, err);
 				assert.equal(true, res.result.n >= 1);
