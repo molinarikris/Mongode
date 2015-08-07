@@ -45,7 +45,7 @@ describe('Mongode', function(){
 	});
 	describe('#update', function() {
 		it('should find a db entry and modify it without error', function(done){
-			db.update({"test": {"$exists":true}}, {"$set": {"second test": "pass"}}, function(err, res){
+			db.update({"test": {$exists:true}}, {"$set": {"second test": "pass"}}, function(err, res){
 				assert.equal(null, err);
 				assert.equal(true, res.result.n >= 1);
 				assert.equal(true, res.result.nModified >= 1);
