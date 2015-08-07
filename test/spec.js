@@ -48,7 +48,7 @@ describe('Mongode', function(){
 			db.update({"test": {$exists:true}}, {"$set": {"second test": "pass"}}, function(err, res){
 				assert.equal(null, err);
 				assert.equal(true, res.result.n >= 1);
-				assert.equal(true, res.result.nModified >= 1);
+				
 				done();
 			})
 		})
