@@ -1,10 +1,10 @@
 {
-  "name": "Mongode",
+  "name": "mongode",
   "version": "1.0.0",
   "description": "A CRUD package that is built on the mongoDB-node driver. Simplifies and streamlines the mongoDB-node.js stack development process.",
-  "main": "index.js",
+  "main": "src/mongode.min.js",
   "scripts": {
-    "test": "test"
+    "test": "mocha test/spec.js"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,15 @@
     "url": "https://github.com/molinarikris/Mongode/issues"
   },
   "dependencies": {
-    "chai": "^3.2.0",
+    "mocha": "^2.2.5",
     "mongodb": "^2.0.39"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-mocha-test": "^0.12.7"
   }
 }
