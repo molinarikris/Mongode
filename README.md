@@ -1,4 +1,4 @@
-# Mongode2
+# Mongode2 ![build status](https://travis-ci.org/molinarikris/Mongode.svg?branch=master)
 _Get your MongoDB--Node.js project off the ground faster._
 
 This wrapper builds on top of the [node-mongodb-native](https://github.com/mongodb/node-mongodb-native) driver with prepackaged methods for quick and simple CRUD access to MongoDB from your Node.js project. **This is used specifically for client operations, not server operations**.
@@ -42,6 +42,7 @@ Argument | Type | Description
 `opts`| Object | **Optional** An object of various options.
 
 `opts` object:
+
 Value | Type | Default | Description
 ------|------|:----:|-----:
 hostname|String or Number|`'localhost'`|A valid hostname or IP.
