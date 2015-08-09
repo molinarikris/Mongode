@@ -2,7 +2,8 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		jshint: {
 			options: {
-				node: true
+				node: true,
+				'-W004': true
 			},
 			all: {
 				src: ['Gruntfile.js', 'lib/*.js', 'tests/*.js']
@@ -26,7 +27,7 @@ module.exports = function(grunt) {
 		watch: {
 			all: {
 				files: ['lib/*.js'],
-				tasks: ['jshint', 'clean', 'uglify']
+				tasks: ['jshint', 'mochaTest', 'clean', 'uglify']
 			}
 		}
 	});

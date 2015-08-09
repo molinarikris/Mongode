@@ -1,7 +1,30 @@
 var assert = require('assert');
-var db = new require('../src/mongode.min.js')('test', 'controllers');
+var dbConstructor = require('../src/mongode.min.js');
+var db = new dbConstructor('test', 'controller');
 
 describe('Mongode', function(){
+	it('should construct a wrapper with two parameters and an options object', function() {
+		var dummy = new dbConstructor('test', 'controller', {});
+		assert.equal(6, Object.keys(dummy).length);
+	});
+	it('should construct a wrapper with one object containing the dbName and colName', function(){
+		var dummy2 = new dbConstructor({
+			dbName: 'test',
+			colName: 'controller'
+		});
+		assert.equal(6, Object.keys(dummy2).length);
+	});
+	it('should throw an error when neither occurence happens', function(){
+		assert.throws(function() {
+			var badDummy = new dbConstructor('just a dbName with no colName');
+		});
+		assert.throws(function() {
+			var badDummy = new dbConstructor({
+				no: "dbName or colName as properties",
+				should: "throw an error"
+			});
+		})
+	})
 	describe('#connection', function() {
 		it('should connect without error and return non-empty database object', function(done) {
 			db.connection(function(err, db){
@@ -10,6 +33,18 @@ describe('Mongode', function(){
 				done();
 			})
 		});
+		it('should maintain the original connection while connecting to secondary db', function(done){
+			var db2 = new dbConstructor('test2', 'controllers');
+			db2.connection(function(err, db){
+				assert.equal(null, err);
+				assert.equal('test2', db.s.databaseName);
+			});
+			db.connection(function(err, db){
+				assert.equal(null, err);
+				assert.equal('test', db.s.databaseName);
+				done();
+			})
+		})
 	});
 	describe('#create', function(){
 		it('should make a new database entry with no error', function(done){
@@ -25,13 +60,23 @@ describe('Mongode', function(){
 				assert.equal(3, res.result.n);
 				done();
 			});
+		});
+		it('should be able to insert a document without specifying a callback', function(done){
+			db.create([{"hi":"test"}, {"hi":"test"}]);
+			setTimeout(function() {
+				db.read({"hi":"test"}, function(err, docs){
+					assert.equal(null, err);
+					assert.equal(2, docs.length);
+					done();
+				})
+			}, 25);
 		})
 	});
 	describe('#read', function(){
 		it('should create an array of all database entries given no query', function(done){
 			db.read(function(err, docs){
 				assert.equal(null, err);
-				assert.equal(4, docs.length);
+				assert.equal(6, docs.length);
 				done();
 			})
 		});
