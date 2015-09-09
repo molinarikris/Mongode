@@ -103,15 +103,20 @@ describe('Mongode', function(){
 
 	describe('#aggregate', function() {
 		it('should run pipeline-based stats on a collection', function(done) {
-			db.aggregate({
+			db.aggregate([{
 				$group: {
 					_id: "$test",
 					frequency: {$sum: 1}
 				}
-			}, {}, function(err, res) {
+			}, {
+				$sort: {
+					_id: -1
+				}
+			}
+			], {}, function(err, res) {
 				assert.equal(err, null);
 				assert.equal(res[0].frequency, 2);
-				assert.equal(res[0]._id, "pass");
+				assert.equal(res[0]._id, "test");
 				done();
 			})
 		})
