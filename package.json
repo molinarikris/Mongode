@@ -1,6 +1,6 @@
 {
   "name": "mongode2",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A CRUD package that is built on the mongoDB-node driver. Simplifies and streamlines the mongoDB-node.js stack development process.",
   "main": "src/mongode.min.js",
   "scripts": {
@@ -25,10 +25,11 @@
     "url": "https://github.com/molinarikris/Mongode/issues"
   },
   "dependencies": {
-    "mocha": "^2.2.5",
+    "deferred": "^0.7.2",
     "mongodb": "^2.0.39"
   },
   "devDependencies": {
+    "mocha": "^2.2.5",
     "grunt": "^0.4.5",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-jshint": "^0.11.2",
