@@ -1,12 +1,10 @@
-# Mongode2
+# Mongode2 ![build status](https://travis-ci.org/molinarikris/Mongode.svg?branch=master)
 _Get your MongoDB--Node.js project off the ground faster._
 
 This wrapper builds on top of the [node-mongodb-native](https://github.com/mongodb/node-mongodb-native) driver with prepackaged methods for quick and simple CRUD access to MongoDB from your Node.js project. **This is used specifically for client operations, not server operations**.
 
-----------
 
 ## Install
-----
 
 To install in your local project, 
 
@@ -19,7 +17,6 @@ Then in your project:
     var db2 = new require('mongode2')('anotherDbName', 'anotherCollectionName');
 
 ## API
-----
 
 ### db(opts)
 
@@ -42,12 +39,11 @@ Argument | Type | Description
 `opts`| Object | **Optional** An object of various options.
 
 `opts` object:
+
 Value | Type | Default | Description
 ------|------|:----:|-----:
-hostname|String or Number|`'localhost'`|A valid hostname or IP.
-port|String or Number|`'27017'`|A valid port, preferably stored as a number, not a string.
-username|String|`null`|If your mongoDB requires authentication, specify a username here.
-password|
+hostname|String|`'localhost'`|A valid hostname.
+port|String|`'27017'`|A valid port, preferably stored as a number, not a string.
 
 ### db.create(data [, callback]);
 
