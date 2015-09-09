@@ -25,10 +25,7 @@
     "url": "https://github.com/molinarikris/Mongode/issues"
   },
   "dependencies": {
-<<<<<<< HEAD
     "deferred": "^0.7.2",
-=======
->>>>>>> 62b6ffbbadd17241bf545141b83944a1d87e5d2f
     "mongodb": "^2.0.39"
   },
   "devDependencies": {
