@@ -37,6 +37,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
-	grunt.registerTask('default', ['jshint', 'mochaTest', 'clean', 'uglify', 'watch']);
-	grunt.registerTask('no-watch', ['jshint', 'mochaTest', 'clean', 'uglify']);
+	grunt.registerTask('default', ['jshint', 'clean', 'uglify', 'mochaTest', 'watch']);
+	grunt.registerTask('no-watch', ['jshint', 'clean', 'uglify', 'mochaTest']);
 };
