@@ -1,6 +1,6 @@
 {
   "name": "mongode2",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A CRUD package that is built on the mongoDB-node driver. Simplifies and streamlines the mongoDB-node.js stack development process.",
   "main": "src/mongode.min.js",
   "scripts": {
