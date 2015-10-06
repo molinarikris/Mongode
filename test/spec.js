@@ -1,6 +1,5 @@
 var assert = require('assert');
 var dbConstructor = require('../src/mongode.min.js');
-var db = new dbConstructor('test', 'controller');
 
 describe('Mongode', function(){
 	it('should construct a wrapper with two parameters and an options object', function() {
@@ -25,6 +24,20 @@ describe('Mongode', function(){
 			});
 		})
 	});
+	it('should accept an option parameter for indexing the collection', function(done) {
+		var dummy = new dbConstructor('test', 'indexedCollection', {indexed: true});
+		dummy.create({test: "pass"}, function(err, res) {
+			dummy.read({}, function(err, docs) {
+				dummy.delete({}, function(err) {
+					assert(Object.keys(docs[0]).indexOf('index') + 1);
+					done();
+				});
+			});
+		});
+	});
+
+	// the db object to be used throughout this test-enviornment.
+	var db = new dbConstructor('test', 'controller');
 
 	describe('#connection', function() {
 		it('should connect without error and return non-empty database object', function(done) {
